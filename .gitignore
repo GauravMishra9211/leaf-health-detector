@@ -1,0 +1,20 @@
+# Ignore model file
+plant_disease_model_1_latest.pt
+
+# Virtual environments
+venv/
+env/
+rahul/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE & system files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Binaries
+*.dll
+*.lib

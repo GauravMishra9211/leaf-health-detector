@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block pagetitle %}
+Supplement Market
+{% endblock pagetitle %}
+
+{% block body %}
+
+<style>
+    body {
+        background-color: #f4f8f2;
+    }
+
+    .market-title {
+        color: #1b5e20;
+        font-weight: 700;
+    }
+
+    .product-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        transition: 0.3s ease;
+        height: 100%;
+        text-align: center;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .product-image {
+        width: 100%;
+        max-width: 220px;
+        height: 220px;
+        object-fit: contain;
+        border-radius: 12px;
+        background: #f8f9fa;
+        padding: 10px;
+    }
+
+    .tag-healthy {
+        color: green;
+        font-weight: bold;
+    }
+
+    .tag-diseased {
+        color: red;
+        font-weight: bold;
+    }
+
+    .buy-btn {
+        background-color: #1b5e20;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-weight: 600;
+    }
+
+    .buy-btn:hover {
+        background-color: #145214;
+    }
+</style>
+
+<div class="container py-5">
+    <div class="row mb-5 text-center">
+        <div class="col-lg-10 mx-auto">
+            <h1 class="display-4 market-title">🛒 Supplements Market 🛒</h1>
+            <p class="lead text-dark">Buy supplements and fertilizers for healthy crop growth</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        {% set shown = namespace(count=0) %}
+
+        {% for index in range(supplement_name | length) %}
+
+            {% if shown.count < 20 %}
+
+                {% set image_url = supplement_image[index] | string %}
+
+                {% if image_url and 'No Image Available' not in image_url and image_url != 'nan' and image_url.startswith('http') %}
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="product-card">
+
+                            {% if index in [3,5,7,11,15,18,20,23,24,25,28,38] %}
+                                <h6>
+                                    Fertilizer
+                                    <span class="tag-healthy">(Healthy)</span>
+                                </h6>
+                            {% else %}
+                                <h6>
+                                    Supplement
+                                    <span class="tag-diseased">(Diseased)</span>
+                                </h6>
+                            {% endif %}
+
+                            <br>
+
+                            <img class="product-image"
+                                 src="{{ image_url }}"
+                                 alt="{{ supplement_name[index] }}"
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/220x220.png?text=Supplement';">
+
+                            <br><br>
+
+                            <h6>For {{ disease[index] }}</h6>
+
+                            <p>
+                                <strong>{{ supplement_name[index] }}</strong>
+                            </p>
+
+                            {% if buy[index] and buy[index] != 'nan' %}
+                                <a target="_blank" href="{{ buy[index] }}">
+                                    <button type="button" class="btn btn-success buy-btn">
+                                        Buy Product
+                                    </button>
+                                </a>
+                            {% else %}
+                                <button type="button" class="btn btn-secondary buy-btn" disabled>
+                                    Not Available
+                                </button>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% set shown.count = shown.count + 1 %}
+
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock body %}

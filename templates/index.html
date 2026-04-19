@@ -1,0 +1,268 @@
+
+{% extends 'base.html' %}
+
+{% block pagetitle %}
+AI Engine
+{% endblock pagetitle %}
+
+{% block body %}
+
+<style>
+    .engine-title {
+        color: #1b5e20;
+        font-weight: 700;
+    }
+
+    .engine-subtitle {
+        color: #555;
+        font-size: 18px;
+    }
+
+    .info-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        height: 100%;
+        transition: 0.3s ease;
+    }
+
+    .info-card:hover {
+        transform: translateY(-6px);
+    }
+
+    .upload-box {
+        border: 2px dashed #198754;
+        border-radius: 20px;
+        padding: 30px 20px;
+        background: #f8fff9;
+        text-align: center;
+    }
+
+    .custom-btn {
+        border-radius: 30px;
+        padding: 10px 22px;
+        font-weight: 600;
+        margin: 5px;
+    }
+
+    .preview-img {
+        display: none;
+        width: 100%;
+        max-width: 320px;
+        max-height: 280px;
+        object-fit: contain;
+        border-radius: 16px;
+        border: 2px solid #ddd;
+        margin-top: 20px;
+    }
+
+    .camera-feed {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 16px;
+        border: 2px solid #ddd;
+    }
+
+    .tips-list li {
+        margin-bottom: 12px;
+        color: #444;
+    }
+
+    @media (max-width: 991px) {
+        .info-card {
+            margin-bottom: 20px;
+        }
+    }
+</style>
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="display-4 engine-title">🍀 AI Disease Detection Engine</h1>
+        <p class="engine-subtitle">Upload a plant leaf image and let AI identify the disease instantly.</p>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+
+        <!-- Left Card -->
+        <div class="col-lg-4">
+            <div class="info-card">
+                <h4 class="mb-4">🌱 Why Detect Plant Disease?</h4>
+                <p>
+                    Early disease detection helps protect crops, increase productivity, reduce financial loss, and improve plant health.
+                </p>
+
+                <div class="text-center mt-4">
+                    <button onclick="googleTranslateElementInit()" class="btn btn-outline-primary custom-btn">
+                        Translate Page
+                    </button>
+                </div>
+
+                <div id="google_translate_element" style="display:none; margin-top:20px;"></div>
+            </div>
+        </div>
+
+        <!-- Center Upload Card -->
+        <div class="col-lg-4">
+            <div class="info-card">
+                <form action="/submit" method="POST" enctype="multipart/form-data" onsubmit="return validateImage();">
+
+                    <div class="upload-box">
+                        <input type="file" id="actual-btn" hidden name="image" accept="image/*" />
+
+                        <label for="actual-btn" class="btn btn-success custom-btn">
+                            Choose Image
+                        </label>
+
+                        <button type="button" id="camera-btn" class="btn btn-primary custom-btn">
+                            Open Camera
+                        </button>
+
+                        <div class="mt-3">
+                            <span id="file-chosen" class="text-muted">No file chosen</span>
+                        </div>
+                    </div>
+
+                    <div id="camera-container" class="text-center mt-4" style="display:none;">
+                        <video id="camera-feed" autoplay class="camera-feed"></video>
+                        <br>
+                        <button type="button" id="capture-btn" class="btn btn-primary custom-btn mt-3">
+                            Capture Photo
+                        </button>
+                    </div>
+
+                    <div class="text-center">
+                        <img id="preview" class="preview-img" src="#" alt="Preview">
+                    </div>
+
+                    <p class="text-center text-muted mt-4 mb-4">
+                        Supported formats: JPG, JPEG, PNG
+                    </p>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success custom-btn px-5">
+                            Detect Disease
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Card -->
+        <div class="col-lg-4">
+            <div class="info-card">
+                <h4 class="mb-4">🛡️ Disease Prevention Tips</h4>
+
+                <ol class="tips-list">
+                    <li>Use clean gardening tools.</li>
+                    <li>Inspect leaves regularly.</li>
+                    <li>Use quality soil and fertilizer.</li>
+                    <li>Ensure proper air circulation.</li>
+                    <li>Remove infected leaves immediately.</li>
+                </ol>
+
+                <div class="text-center mt-4">
+                    <a target="_blank" href="https://www.thespruce.com/prevent-plant-diseases-in-your-garden-2539511">
+                        <button type="button" class="btn btn-outline-success custom-btn">
+                            Learn More
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en'
+    }, 'google_translate_element');
+
+    document.getElementById('google_translate_element').style.display = 'block';
+}
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const actualBtn = document.getElementById("actual-btn");
+    const fileChosen = document.getElementById("file-chosen");
+    const previewImg = document.getElementById("preview");
+    const cameraBtn = document.getElementById("camera-btn");
+    const captureBtn = document.getElementById("capture-btn");
+    const cameraFeed = document.getElementById("camera-feed");
+    const cameraContainer = document.getElementById("camera-container");
+
+    actualBtn.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            fileChosen.textContent = file.name;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                previewImg.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    cameraBtn.addEventListener("click", function () {
+        cameraContainer.style.display = "block";
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                cameraFeed.srcObject = stream;
+            })
+            .catch(() => alert("Unable to access camera."));
+    });
+
+    captureBtn.addEventListener("click", function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = cameraFeed.videoWidth;
+        canvas.height = cameraFeed.videoHeight;
+        const context = canvas.getContext("2d");
+        context.drawImage(cameraFeed, 0, 0, canvas.width, canvas.height);
+
+        canvas.toBlob(function (blob) {
+            const file = new File([blob], "captured.png", { type: "image/png" });
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(file);
+            actualBtn.files = dataTransfer.files;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImg.src = e.target.result;
+                previewImg.style.display = "block";
+                fileChosen.textContent = "captured.png";
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+});
+
+function validateImage() {
+    const fileInput = document.getElementById("actual-btn");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("Please upload or capture an image before submitting.");
+        return false;
+    }
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+
+    if (!allowedTypes.includes(file.type)) {
+        alert("Only JPG, JPEG, and PNG images are allowed.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+{% endblock body %}
+```

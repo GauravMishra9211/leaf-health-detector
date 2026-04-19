@@ -1,0 +1,8 @@
+Flask
+gunicorn
+torch
+torchvision
+pandas
+Pillow
+numpy
+gdown

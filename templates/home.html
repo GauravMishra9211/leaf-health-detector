@@ -1,0 +1,189 @@
+
+{% extends 'base.html' %}
+{% block pagetitle %}
+Plant Disease Detection
+{% endblock pagetitle %}
+
+{% block body %}
+<style>
+  body {
+    overflow-x: hidden;
+    background-color: #f5f7f2;
+  }
+
+  .hero-title {
+    color: #1b5e20;
+    font-weight: 700;
+  }
+
+  .crop-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+    height: 100%;
+    text-align: center;
+  }
+
+  .crop-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .crop-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .crop-name {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1b1b1b;
+  }
+
+  .ai-btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .desktop-only {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 769px) {
+    .mobile-only {
+      display: none;
+    }
+  }
+</style>
+
+<div class="mobile-only text-center py-5 px-3">
+  <h1 class="text-danger">Note</h1>
+  <p class="lead text-dark">Please open this website on Laptop or PC for best experience.</p>
+</div>
+
+<div class="desktop-only container py-5">
+
+  <div class="text-center mb-5">
+    <h1 class="display-4 hero-title">🍁 Plant Disease Detection 🍁</h1>
+    <p class="lead text-dark">
+      This AI engine helps detect diseases from fruits and vegetable leaves.
+    </p>
+
+    <a href="/index" class="btn btn-success ai-btn mt-3">
+      Open AI Engine
+    </a>
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce" alt="Apple">
+        <div class="crop-name">Apple</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e" alt="Blueberry">
+        <div class="crop-name">Blueberry</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919" alt="Cherry">
+        <div class="crop-name">Cherry</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1634467524884-897d0af5e104?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29ybnxlbnwwfHwwfHx8MA%3D%3D" alt="Corn">
+        <div class="crop-name">Corn</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1537640538966-79f369143f8f" alt="Grape">
+        <div class="crop-name">Grape</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1547514701-42782101795e" alt="Orange">
+        <div class="crop-name">Orange</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1639588473831-dd9d014646ae?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8UGVhY2h8ZW58MHx8MHx8fDA%3D" alt="Peach">
+        <div class="crop-name">Peach</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1563565375-f3fdfdbefa83" alt="Pepper Bell">
+        <div class="crop-name">Pepper Bell</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655" alt="Potato">
+        <div class="crop-name">Potato</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1577069861033-55d04cec4ef5" alt="Raspberry">
+        <div class="crop-name">Raspberry</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5" alt="Soybean">
+        <div class="crop-name">Soybean</div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="crop-card">
+        <img src="https://plus.unsplash.com/premium_photo-1666823706503-46b8b71593fc?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Squash">
+        <div class="crop-name">Squash</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6" alt="Strawberry">
+        <div class="crop-name">Strawberry</div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="crop-card">
+        <img src="https://images.unsplash.com/photo-1546094096-0df4bcaaa337" alt="Tomato">
+        <div class="crop-name">Tomato</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock body %}
+```

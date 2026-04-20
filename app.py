@@ -7,7 +7,16 @@ import numpy as np
 import torch
 import pandas as pd
 import os
+import gdown
 
+model_path = "plant_disease_model_1_latest.pt"
+
+if not os.path.exists(model_path):
+    gdown.download(
+        "https://drive.google.com/uc?export=download&id=1pzyCBdk4lFzq5L3CbIf8NJKhFPWObOgI",
+        model_path,
+        quiet=False
+    )
 # Model path
 model_path = "plant_disease_model_1_latest.pt"
 

@@ -1,126 +1,219 @@
-# leaf-health-detector
-# 🌿 Leaf Health Detector
+# 🌿 AgriVision AI
 
-An AI-powered web application that detects plant leaf diseases using Deep Learning and provides supplement recommendations for better crop health.
+### 🚀 AI-Powered Leaf Disease Detection System
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f9d58,100:14532d&height=200&section=header&text=AgriVision%20AI&fontSize=40&fontColor=ffffff"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/GauravMishra9211/leaf-health-detector?style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/GauravMishra9211/leaf-health-detector?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge&logo=python">
+  <img src="https://img.shields.io/badge/Flask-Web%20App-black?style=for-the-badge&logo=flask">
+  <img src="https://img.shields.io/badge/PyTorch-AI-red?style=for-the-badge&logo=pytorch">
+</p>
+
+---
+
+## 🌱 About the Project
+
+AgriVision AI is a **Deep Learning-based web application** that detects plant leaf diseases and provides **smart recommendations** to improve crop health.
+
+✔️ Built for farmers, students, and researchers
+✔️ Fast, accurate, and easy to use
+✔️ Real-time disease prediction
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+<img src="./screenshots/home.png" width="900">
+
+### 🤖 AI Engine
+
+<img src="./screenshots/ai-engine.png" width="900">
+
+### 🌱 Disease Result
+
+<img src="./screenshots/result.png" width="900">
+
+### 🛒 Supplements Market
+
+<img src="./screenshots/market.png" width="900">
+
+### 📞 Contact Page
+
+<img src="./screenshots/contact.png" width="900">
 
 ---
 
 ## 🚀 Features
 
-- Upload plant leaf images for instant disease detection
-- Detect diseases using a trained CNN model
-- View disease description and prevention steps
-- Get fertilizer and supplement recommendations
-- Responsive modern UI
-- Camera support for direct image capture
-- Supplement market section
-- Contact page with project details
+* Upload plant leaf images
+* Detect diseases using CNN model
+* Instant AI predictions
+* Disease description & prevention
+* Fertilizer & supplement suggestions
+* Camera capture support
+* Responsive UI
+
+---
+
+## 🧠 How It Works
+
+Leaf Image → Preprocessing → CNN Model → Prediction → Result + Recommendations
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Python
-- Flask
-- PyTorch
-- Pandas
-- NumPy
-- HTML
-- CSS
-- Bootstrap
-- JavaScript
+* **Backend:** Python, Flask
+* **AI Model:** PyTorch
+* **Frontend:** HTML, CSS, Bootstrap, JavaScript
+* **Libraries:** NumPy, Pandas, Pillow
 
 ---
 
 ## 📂 Project Structure
 
-```bash
-leaf-health-detector-main/
+leaf-health-detector/
 │
 ├── app.py
 ├── CNN.py
 ├── disease_info.csv
 ├── supplement_info.csv
-├── plant_disease_model_1_latest.pt
 ├── requirements.txt
 ├── Procfile
 ├── runtime.txt
 │
 ├── static/
-│   ├── style.css
-│   ├── manifest.json
-│   ├── sw.js
-│   └── uploads/
-│
 ├── templates/
-│   ├── base.html
-│   ├── home.html
-│   ├── index.html
-│   ├── submit.html
-│   ├── market.html
-│   ├── contact.html
-│   └── 404.html
-│
 └── README.md
 
-⚙️ Installation
+---
 
-Clone the repository:
+## ⚙️ Installation
 
-git clone https://github.com/YOUR_USERNAME/leaf-health-detector.git
+```bash
+git clone https://github.com/GauravMishra9211/leaf-health-detector.git
 cd leaf-health-detector
-
-Create virtual environment:
 
 python3 -m venv venv
 source venv/bin/activate
 
-Install dependencies:
-
 pip install -r requirements.txt
-
-Run the project:
-
 python3 app.py
+```
 
-Open in browser:
+👉 Open in browser:
+http://127.0.0.1:5000
 
-http://127.0.0.1:5001
-🌱 Model File
+---
 
-The trained model file is too large for GitHub.
+## 🌱 Model Setup
 
-Download the model separately and place it in the root project folder:
+⚠️ Model file is large and not included in repo
 
+Place in root directory:
+
+```bash
 plant_disease_model_1_latest.pt
-📸 Screenshots
+```
 
-Add screenshots of:
+---
 
-Home Page
-AI Engine
-Disease Result Page
-Supplement Market
-Contact Page
-🌍 Deployment
+## 🌍 Deployment
 
-You can deploy this project easily on:
+Supported platforms:
 
-Render
-Railway
-Replit
-PythonAnywhere
+* Render
+* Railway
+* Replit
 
-Recommended:
+Config:
 
-Build Command: pip install -r requirements.txt
-Start Command: gunicorn app:app
-👨‍💻 Author
+```bash
+Build: pip install -r requirements.txt  
+Start: gunicorn app:app  
+```
 
-Gaurav Mishra
-B.Tech Student | AI & Data Analytics Enthusiast
-GL Bajaj Institute of Technology and Management
+---
 
-📜 License
+## 🎯 Objective
 
-This project is for educational and research purposes only.
+* Detect plant diseases accurately
+* Provide actionable insights
+* Help farmers using AI
+* Improve agricultural productivity
+
+---
+
+## 🚀 Future Scope
+
+* 📱 Mobile App
+* 🌍 Multi-language support
+* 📊 Larger dataset
+* 📡 Real-time detection
+
+---
+
+## 👨‍💻 Author
+
+**Gaurav Mishra**
+B.Tech | AI & Data Analytics
+
+📧 [mishragaurav6825@gmail.com](mailto:mishragaurav6825@gmail.com)
+🔗 https://github.com/GauravMishra9211
+
+---
+
+## ⭐ Support
+
+If you like this project:
+
+👉 Star ⭐ the repo
+👉 Share it
+👉 Fork it
+
+---
+
+## 📜 License
+
+Educational and research purposes only
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:14532d,100:0f9d58&height=120&section=footer"/>
+</p>
+
+---
+
+## ⚠️ IMPORTANT (DO THIS)
+
+Create this folder:
+
+```
+/screenshots/
+```
+
+Add your images:
+
+```
+home.png
+ai-engine.png
+result.png
+market.png
+contact.png
+```
+
+Then push:
+
+```bash
+git add .
+git commit -m "Updated README"
+git push
+```
